@@ -25,7 +25,7 @@ const revenue = async () => {
         REVENUE_START +
         Math.round(
           ((POTENTIAL_TARGET - REVENUE_START) / (W_END - W_START)) *
-            (w - W_START)
+          (w - W_START)
         ),
       potentialRealised: REVENUE_START,
       revenueTarget:
@@ -47,11 +47,11 @@ const revenue = async () => {
     const year = date.getFullYear();
 
     // Only include data from this year
-    if (year !== 2021) {
+    if (year !== 2023) {
       continue;
     }
-
     const week = getWeek(date);
+    console.log(week)
 
     // If its week of modification is outside of bounds, ignore it
     if (week < W_START || week > W_END) {
@@ -97,7 +97,7 @@ const revenue = async () => {
     const year = date.getFullYear();
 
     // Only include data from this year
-    if (year !== 2021) {
+    if (year !== 2023) {
       continue;
     }
 

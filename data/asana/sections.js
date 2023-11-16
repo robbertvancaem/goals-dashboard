@@ -1,14 +1,59 @@
-import { ASANA_BASE_URL, ASANA_PAT } from "../../constants";
+import {
+  ASANA_DISCOVERY_GID, ASANA_NEGOTIATION_GID, ASANA_CLOSED_WON_GID
+} from '../../constants'
 
-const auth = {
-  headers: {
-    Authorization: `Bearer ${ASANA_PAT}`,
+const discoveryMock = [{
+  name: 'New TODO App',
+  created_at: '08-21-2023',
+  custom_fields: [{
+    name: 'Value',
+    display_value: 15000,
+    number_value: 15000
+  }, {
+    name: 'Clients',
+    display_value: 'Todoist'
+  }]
+}]
+
+const negotationMock = [{
+  name: 'New mobile app',
+  created_at: '09-21-2023',
+  custom_fields: [{
+    name: 'Value',
+    display_value: 15000,
+    number_value: 15000
   },
-};
+  {
+    name: 'Clients',
+    display_value: 'WeAreMobile'
+  }
+  ]
+}]
+
+const closedMock = [{
+  name: 'New TODO App',
+  created_at: new Date(),
+  custom_fields: [{
+    name: 'Value',
+    display_value: 15000,
+    number_value: 15000
+  }, {
+    name: 'Clients',
+    display_value: 'Client #1'
+  }]
+}]
+
+const getMock = gid => {
+  switch (gid) {
+    case ASANA_DISCOVERY_GID:
+      return discoveryMock
+    case ASANA_NEGOTIATION_GID:
+      return negotationMock
+    case ASANA_CLOSED_WON_GID:
+      return closedMock;
+  }
+}
 
 export const getTasksFromSection = async (gid) => {
-  const url = `${ASANA_BASE_URL}/sections/${gid}/tasks?opt_fields=custom_fields,created_at,resource_type,gid,created_at,name&limit=100`;
-  const res = await fetch(url, auth);
-  const data = await res.json();
-  return data.data;
+  return getMock(gid)
 };
