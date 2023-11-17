@@ -27,6 +27,6 @@
     "eslint-config-next": "11.1.0",
     "jest": "^27.2.2",
     "postcss": "^8.3.6",
-    "tailwindcss": "^2.2.8"
+    "tailwindcss": "3.3.5"
   }
 }
