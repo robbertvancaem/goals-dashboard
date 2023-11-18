@@ -66,8 +66,8 @@ const CustomTooltip = ({ active, payload, label }) => {
 }
 
 const RevenueChart = ({ data }) => (
-    <div className="h-96 my-8">
-        <ResponsiveContainer>
+    <div className="h-96 my-8 overflow-x-scroll">
+        <ResponsiveContainer minWidth={500}>
             <ComposedChart barGap={-20} data={data} margin={{ left: 20 }}>
                 <Legend verticalAlign="top" />
                 <CartesianGrid strokeDasharray="3 3" stroke="#333" />

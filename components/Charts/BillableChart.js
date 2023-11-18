@@ -18,7 +18,8 @@ const CustomTooltip = ({ active, payload, label }) => {
             <div className="bg-slate-900 border border-gray-500 p-2">
                 <div className="text-sky-200">{label}</div>
                 <p className="text-sm">
-                    Total: {total} / {capacity}{' '}
+                    Total: {total}hrs / {capacity}
+                    {'hrs '}
                     <span className="text-xs">
                         (
                         {capacity !== 0
@@ -28,7 +29,8 @@ const CustomTooltip = ({ active, payload, label }) => {
                     </span>
                 </p>
                 <p className="text-sm">
-                    Billable: {billable} / {target}{' '}
+                    Billable: {billable}hrs / {target}
+                    {'hrs '}
                     <span className="text-xs">
                         (
                         {target !== 0
@@ -45,8 +47,8 @@ const CustomTooltip = ({ active, payload, label }) => {
 }
 
 const BillableChart = ({ data }) => (
-    <div className="h-96 mt-16 mb-8">
-        <ResponsiveContainer>
+    <div className="h-96 mt-16 mb-8 overflow-x-scroll">
+        <ResponsiveContainer minWidth={500}>
             <ComposedChart barGap={-20} margin={{ left: 20 }} data={data}>
                 <Legend verticalAlign="top" />
                 <CartesianGrid strokeDasharray="3 3" stroke="#333" />
@@ -55,7 +57,11 @@ const BillableChart = ({ data }) => (
                     stroke={COLORS.GRAY}
                     tick={{ fontSize: '.825rem' }}
                 />
-                <YAxis stroke={COLORS.GRAY} tick={{ fontSize: '.825rem' }} />
+                <YAxis
+                    stroke={COLORS.GRAY}
+                    tick={{ fontSize: '.825rem' }}
+                    tickFormatter={(v) => `${v}hrs`}
+                />
                 <Tooltip content={<CustomTooltip />} />
                 <Line
                     dataKey="capacity"

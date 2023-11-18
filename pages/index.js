@@ -11,7 +11,7 @@ export default function Home({
     lastUpdate,
 }) {
     return (
-        <div className="w-full p-16 text-white bg-slate-900 min-h-screen">
+        <div className="w-full p-4 pt-12 md:p-16 text-white bg-slate-900 min-h-screen">
             <Head>
                 <title>Goals dashboard</title>
             </Head>
@@ -62,6 +62,17 @@ export default function Home({
                     The chart below shows data for the progress so far.
                 </Paragraph>
                 <BillableChart data={billabillityGraphData} />
+            </div>
+            <div className="my-4 text-center text-sm">
+                Made with ❤️ by{' '}
+                <a
+                    href="https://github.com/robbertvancaem"
+                    target="_blank"
+                    rel="noreferrer"
+                    className="font-semibold text-sky-200 hover:text-orange-400 underline"
+                >
+                    Robbert van Caem
+                </a>
             </div>
         </div>
     )
